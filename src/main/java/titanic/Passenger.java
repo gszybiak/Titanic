@@ -1,8 +1,8 @@
-package com.example.mario;
+package titanic;
 
-import com.example.mario.enums.Embarked;
-import com.example.mario.enums.PassengerClass;
-import com.example.mario.enums.Sex;
+import titanic.enums.Embarked;
+import titanic.enums.PassengerClass;
+import titanic.enums.Sex;
 import lombok.Data;
 
 @Data

@@ -1,4 +1,4 @@
-package com.example.mario.enums;
+package titanic.enums;
 
 public enum Sex {
     MALE,

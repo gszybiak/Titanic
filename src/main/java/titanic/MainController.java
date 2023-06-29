@@ -1,12 +1,12 @@
-package com.example.mario;
+package titanic;
 
-import com.example.mario.enums.Embarked;
-import com.example.mario.enums.PassengerClass;
-import com.example.mario.enums.Sex;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import titanic.enums.Embarked;
+import titanic.enums.PassengerClass;
+import titanic.enums.Sex;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,20 +16,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import org.apache.commons.lang3.StringUtils;
 
-public class HelloController {
+public class MainController {
 
     @FXML
-    private Button buttonFile;
+    private Button chooseFile;
     @FXML
     private TextField passengerName;
 
-    List<Passenger> passengerList = new ArrayList<>();
+    private List<Passenger> passengerList = new ArrayList<>();
 
     @FXML
-    protected void onHelloButtonClick() throws IOException {
+    protected void onChooseFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
-        File selectedFile = fileChooser.showOpenDialog(buttonFile.getScene().getWindow());
+        File selectedFile = fileChooser.showOpenDialog(chooseFile.getScene().getWindow());
         loadData(selectedFile, passengerList);
 
         getInformationAboutPassenger();
@@ -41,7 +42,7 @@ public class HelloController {
 
     @FXML
     protected void countButtonClick(){
-        if(passengerName.getText() == null || passengerName.getText().equals(""))
+        if(StringUtils.isEmpty(passengerName.getText()))
             return;
         String name = passengerName.getText();
         double averageAge = passengerList.stream().filter(passenger -> passenger.getName().contains("\"" + name)).collect(Collectors.averagingDouble(Passenger::getAge));
